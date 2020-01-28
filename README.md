@@ -20,26 +20,25 @@ Quisque eget dolor feugiat, sodales mauris eget, consequat dui. Cras aliquet dia
 
 ## Quick start
 
-- `npm i material-kit-react`
-- [Download from Github](https://github.com/creativetimofficial/material-kit-react/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/material-kit-react).
-- Install with [Bower](https://bower.io/): ```bower install material-kit-react```.
-- Clone the repo: `git clone https://github.com/creativetimofficial/material-kit-react.git`.
+- Clone the repo: `git clone https://github.com/YodaDevs/Doar-te.git`.
+- `cd Doar-te`
+- `npm install`
+- You can install with [Bower](https://bower.io/): ```bower install```.
 
 
 ## Documentation
-The documentation for the Material Kit React is hosted at our [website](https://demos.creative-tim.com/material-kit-react/#/documentation/tutorial).
+The documentation for the Project is hosted at our [repository](https://github.com/YodaDevs/Doar-te/tree/master/Documentation).
 
 
 ## File Structure
 Within the download you'll find the following directories and files:
 
 ```
-material-kit-react
+Doar-te
 .
 ├── CHANGELOG.md
 ├── ISSUE_TEMPLATE.md
-├── LICENSE.md
+├── LICENSE
 ├── README.md
 ├── bower.json
 ├── gulpfile.js
@@ -166,24 +165,15 @@ At present, we officially aim to support the last two versions of the following 
 - Demo: <https://demos.creative-tim.com/material-kit-react/#/>
 - Download Page: <https://www.creative-tim.com/product/material-kit-react>
 - Documentation: <https://demos.creative-tim.com/material-kit-react/#/documentation/tutorial>
-- License Agreement: <https://www.creative-tim.com/license>
-- Support: <https://www.creative-tim.com/contact-us>
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/material-kit-react/issues)
 
 
 ## Licensing
 
-- Copyright 2019 Creative Tim (https://www.creative-tim.com/)
-
-- Licensed under MIT (https://github.com/creativetimofficial/material-kit/blob/master/LICENSE.md)
+- Licensed under MIT (https://github.com/YodaDevs/Doar-te/blob/master/LICENSE)
 
 
 ### Social Media
 
 Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
 
 Instagram: <https://www.instagram.com/CreativeTimOfficial>
