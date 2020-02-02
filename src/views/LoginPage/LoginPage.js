@@ -136,8 +136,10 @@ function LoginPage(props) {
                     <Button 
                     simple color="primary" 
                     fullWidth
+                    component={Link}
+						        to="/register-page"
                     size="lg">
-                      <Link to={"/register-page"} className={classes.link}>Register</Link>
+                      Register
                     </Button>
                   </CardFooter>
                 </form>

@@ -64,14 +64,14 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        {/*<SectionBasics />
+        <SectionBasics />
         <SectionNavbars />
         <SectionTabs />
         <SectionPills />
         <SectionNotifications />
         <SectionTypography />
         <SectionJavascript />
-        <SectionCarousel />*/}
+        <SectionCarousel />
         <SectionCompletedExamples />
         <SectionLogin />
         <GridItem md={12} className={classes.textCenter}>
