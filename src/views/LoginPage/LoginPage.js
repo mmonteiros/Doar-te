@@ -57,7 +57,7 @@ function LoginPage(props) {
       <Header
         absolute
         color="transparent"
-        brand="Material Kit React"
+        brand="Doar te"
         rightLinks={<HeaderLinks />}
         {...rest}
       />
