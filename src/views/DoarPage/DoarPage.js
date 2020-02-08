@@ -1,60 +1,78 @@
-import React, { useEffect, useState } from "react";
-import cx from 'clsx';
-import { Link, withRouter } from 'react-router-dom'
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography, CircularProgress, FormControl, Input, InputLabel } from '@material-ui/core'
-import withStyles from '@material-ui/core/styles/withStyles'
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import firebase from "../../firebase/firebase";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinksUser from "components/Header/HeaderLinksUser";
-import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
-import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
-import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 
-import styles from "assets/jss/material-kit-react/views/dashboardPage.js";
-import CardStyles from "assets/jss/material-kit-react/components/blogCardStyle";
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import Modal from '@material-ui/core/Modal';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
 
-import image from "assets/img/bg7.jpg";
+import camiseta from "assets/img/examples/camiseta.jpg";
+import calca from "assets/img/examples/calca.jpg";
 
-import firebase from "../../firebase/firebase";
+import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
-const useStyles = makeStyles(styles);
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
 
-function DoarPage(props) {
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+export default function DoarPage(props) {
+
+  const list = [
+    {
+      id: 'a',
+      firstname: 'Robin',
+      lastname: 'Wieruch',
+      email: "robin@gmail.com",
+    },
+    {
+      id: 'b',
+      firstname: 'Dave',
+      lastname: 'Davidds',
+      email: "dave@gmail.com",
+    },
+  ];
+
   const classes = useStyles();
 
-  const classesCard = CardStyles();
-
   const { ...rest } = props;
+  
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = React.useState(getModalStyle);
+  
+  const [open, setOpen] = React.useState(false);
 
-  const [quote, setQuote] = useState('');
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-  const {
-    button: buttonStyles,
-    ...cardContentStyles
-  } = useBlogCardContentStyles();
-
-  const shadowStyles = useOverShadowStyles();
-
-  useEffect(() =>{
-		if(firebase.getCurrentUsername()) {
-		  firebase.getCurrentUserQuote().then(setQuote)
-		}
-  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote()])
-		 
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   if(!firebase.getCurrentUsername()) {
 		// not logged in
 		alert('Please login first')
@@ -62,9 +80,8 @@ function DoarPage(props) {
 		return null
   }
 
-  
   return (
-	<div>
+    <div>
       <Header
         absolute
         color=""
@@ -72,10 +89,141 @@ function DoarPage(props) {
         rightLinks={<HeaderLinksUser />}
         {...rest}
       />
-    
-        <Footer />
+      <div className={classes.root, classes.main, classes.mainRaised}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>xs=12</Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+          <Card 
+          onClick={handleOpen}
+          className={classes.card, classes.main, classes.mainRaised}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={camiseta}
+                title="Contemplative Reptile"
+              />
+            </CardActionArea>
+          </Card>
+          </Grid>
+          <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={open}
+            onClose={handleClose}
+          >
+            <div style={modalStyle} className={classes.paperModal}>
+              <h2 id="simple-modal-title" align="center" > Camisetas </h2>
+              <List id="simple-modal-description" className={classes.rootList}> 
+                  {list.map (item => (
+                    <ListItem>
+                      <ListItemAvatar>
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                      </ListItemAvatar>
+                      <ListItemText primary={item.firstname} secondary={item.email} />
+                    </ListItem>
+                   ))}     
+              </List>
+            </div>
+          </Modal>
+          <Grid item xs={6} sm={3}>
+            <Card 
+            onClick={handleOpen}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={calca}
+                  title="Contemplative Reptile"
+                />
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Card 
+            onClick={handleOpen}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={camiseta}
+                  title="Contemplative Reptile"
+                />
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Card 
+            onClick={handleOpen}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={camiseta}
+                  title="Contemplative Reptile"
+                />
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={6} sm={3}>
+            <Card 
+              onClick={handleOpen}
+              className={classes.card, classes.main, classes.mainRaised}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={calca}
+                    title="Contemplative Reptile"
+                  />
+                </CardActionArea>
+              </Card>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Card 
+              onClick={handleOpen}
+              className={classes.card, classes.main, classes.mainRaised}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={calca}
+                    title="Contemplative Reptile"
+                  />
+                </CardActionArea>
+              </Card>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Card 
+              onClick={handleOpen}
+              className={classes.card, classes.main, classes.mainRaised}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={calca}
+                    title="Contemplative Reptile"
+                  />
+                </CardActionArea>
+              </Card>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Card 
+              onClick={handleOpen}
+              className={classes.card, classes.main, classes.mainRaised}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={calca}
+                    title="Contemplative Reptile"
+                  />
+                </CardActionArea>
+              </Card>
+          </Grid>
+        </Grid>
       </div>
+    </div>
   );
-};
-
-export default withRouter((withStyles(styles)(DoarPage)))
+}
