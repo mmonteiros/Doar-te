@@ -17,27 +17,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 import camiseta from "assets/img/examples/camiseta.jpg";
 import calca from "assets/img/examples/calca.jpg";
 
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
 
 export default function DoarPage(props) {
 
@@ -59,9 +45,6 @@ export default function DoarPage(props) {
   const classes = useStyles();
 
   const { ...rest } = props;
-  
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
   
   const [open, setOpen] = React.useState(false);
 
@@ -112,22 +95,30 @@ export default function DoarPage(props) {
             aria-describedby="simple-modal-description"
             open={open}
             onClose={handleClose}
+            className={classes.modal}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
           >
-            <div style={modalStyle} className={classes.paperModal}>
-              <h2 id="simple-modal-title" align="center" > Camisetas </h2>
-              <List id="simple-modal-description" className={classes.rootList}> 
-                  {list.map (item => (
-                    <ListItem>
-                      <ListItemAvatar>
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText primary={item.firstname} secondary={item.email} />
-                    </ListItem>
-                   ))}     
-              </List>
-            </div>
+            <Fade in={open}>
+              <div className={classes.paperModal}>
+                <h2 id="simple-modal-title" align="center" > Camisetas </h2>
+                <List id="simple-modal-description" className={classes.rootList}> 
+                    {list.map (item => (
+                      <ListItem>
+                        <ListItemAvatar>
+                        <Avatar>
+                          <ImageIcon />
+                        </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={item.firstname} secondary={item.email} />
+                      </ListItem>
+                    ))}     
+                </List>
+              </div>
+            </Fade>
           </Modal>
           <Grid item xs={6} sm={3}>
             <Card 
