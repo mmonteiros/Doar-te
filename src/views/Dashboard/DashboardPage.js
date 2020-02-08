@@ -1,85 +1,146 @@
-import React, { useEffect, useState } from 'react'
-import { Typography, Paper, Avatar, CircularProgress, Button } from '@material-ui/core'
-import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
+import React, { useEffect, useState } from "react";
+import cx from 'clsx';
+import { Link, withRouter } from 'react-router-dom'
+// nodejs library that concatenates classes
+import classNames from "classnames";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography, CircularProgress, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
-import firebase from '../../firebase/firebase'
-import { withRouter } from 'react-router-dom'
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+// @material-ui/icons
+import Email from "@material-ui/icons/Email";
+import People from "@material-ui/icons/People";
+// core components
+import Header from "components/Header/Header.js";
+import HeaderLinksUser from "components/Header/HeaderLinksUser";
+import Footer from "components/Footer/Footer.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem.js";
+import Button from "components/CustomButtons/Button.js";
+import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
+import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
+import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
 
-const styles = theme => ({
-	main: {
-		width: 'auto',
-		display: 'block', // Fix IE 11 issue.
-		marginLeft: theme.spacing.unit * 3,
-		marginRight: theme.spacing.unit * 3,
-		[theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-			width: 400,
-			marginLeft: 'auto',
-			marginRight: 'auto',
-		},
-	},
-	paper: {
-		marginTop: theme.spacing.unit * 8,
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-	},
-	avatar: {
-		margin: theme.spacing.unit,
-		backgroundColor: theme.palette.secondary.main,
-	},
-	submit: {
-		marginTop: theme.spacing.unit * 3,
-	},
-})
+import styles from "assets/jss/material-kit-react/views/dashboardPage.js";
+import blogCardStyles from "assets/jss/material-kit-react/components/blogCardStyle";
+
+import image from "assets/img/bg7.jpg";
+
+import firebase from "../../firebase/firebase";
+import ProfileCard from "../../components/Card/ProfileCard";
+
+const useStyles = makeStyles(styles);
 
 function Dashboard(props) {
-	const { classes } = props
+  const classes = useStyles();
 
-	const [quote, setQuote] = useState('')
+  const classesCard = blogCardStyles();
 
-	useEffect(() =>{
+  const { ...rest } = props;
+
+  const [quote, setQuote] = useState('');
+
+  const {
+    button: buttonStyles,
+    ...cardContentStyles
+  } = useBlogCardContentStyles();
+
+  const shadowStyles = useOverShadowStyles();
+
+  useEffect(() =>{
 		if(firebase.getCurrentUsername()) {
 		  firebase.getCurrentUserQuote().then(setQuote)
 		}
-	  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote()])
-	  
-	  if(!firebase.getCurrentUsername()) {
+  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote()])
+		 
+  if(!firebase.getCurrentUsername()) {
 		// not logged in
 		alert('Please login first')
 		props.history.replace('/login-page')
 		return null
-	}
+  }
 
-	return (
-		<main className={classes.main}>
-			<Paper className={classes.paper}>
-				<Avatar className={classes.avatar}>
-					<VerifiedUserOutlined />
-				</Avatar>
-				<Typography component="h1" variant="h5">
-					Hello { firebase.getCurrentUsername() }
-				</Typography>
-				<Typography component="h1" variant="h5">
-					Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
-				</Typography>
-				<Button
-					type="submit"
-					fullWidth
-					variant="contained"
-					color="secondary"
-					onClick={logout}
-					className={classes.submit}>
-					Logout
-          		</Button>
-			</Paper>
-		</main>
-	)
+  
+  return (
+	<div>
+      <Header
+        absolute
+        color=""
+        brand="Doar te"
+        rightLinks={<HeaderLinksUser />}
+        {...rest}
+      />
+	<div 
+	style={{
+		backgroundImage: "url(" + image + ")",
+		backgroundSize: "cover",
+		backgroundPosition: "top center"
+	  }}
+	 className={classNames(classes.main, classes.mainRaised)}>
+		 <br/><br/>
+		<GridContainer justify="center">
+			<GridItem xs={12} sm={12} md={4}>
+				<ProfileCard/>
+			</GridItem>
+		</GridContainer>
+		<br/><br/>
+          <GridContainer justify="center">
+		  	<Card className={cx(classesCard.root, shadowStyles.root)}>
+				<CardMedia
+					className={classesCard.media}
+					image={
+					'https://s3.amazonaws.com/lilianpacce/wp-content/uploads/2017/11/271117-dia-de-doar1.jpg'
+					}
+				/>
+				<CardContent>
+					<TextInfoCardContent
+					classes={cardContentStyles}
+					overline={''}
+					heading={''}
+					body={
+						<Typography component="h1" variant="h5">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							<br/>
+							Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
+						</Typography>
+					}
+					/>
+					<Button className={buttonStyles}>Doar</Button>
+				</CardContent>
+			</Card>
+			<Card className={cx(classesCard.root, shadowStyles.root)}>
+				<CardMedia
+					className={classesCard.media}
+					image={
+					'https://lilianmendanha.com.br/wp-content/uploads/2017/04/receber.jpg'
+					}
+				/>
+				<CardContent>
+					<TextInfoCardContent
+					classes={cardContentStyles}
+					overline={''}
+					heading={''}
+					body={
+						<Typography component="h1" variant="h5">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							<br/>
+							Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
+						</Typography>
+					}
+					/>
+					<Button className={buttonStyles}>Receber</Button>
+				</CardContent>
+			</Card>
+          </GridContainer>
+		<br/>
+		<br/>
+        </div>
+        <Footer />
+      </div>
+  );
+};
 
-	async function logout() {
-		await firebase.logout()
-		props.history.push('/')
-	}
-}
-
-export default withRouter(withStyles(styles)(Dashboard))
+export default withRouter((withStyles(styles)(Dashboard)))

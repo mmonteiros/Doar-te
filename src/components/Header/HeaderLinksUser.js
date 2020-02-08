@@ -3,7 +3,7 @@ import React from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,37 +16,36 @@ import { Apps } from "@material-ui/icons";
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
 // core components
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
+import firebase from "../../firebase/firebase";
+
+
 const useStyles = makeStyles(styles);
 
-function HeaderLinks(props) {
+function HeaderLinksUser(props) {
+
   const classes = useStyles();
 
-  async function register() {
-    props.history.push('/login-page');
-    }
+  async function logout() {
+	await firebase.logout()
+	props.history.push('/')
+  }
 
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
           <Button
             color="transparent"
-            onClick={register}  
+            onClick={logout}   
             className={classes.navLink}
           >
-            <AccountCircleOutlinedIcon className={classes.icons} /> Login
+            <AccountCircleOutlinedIcon className={classes.icons} /> Logout
           </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
         <Tooltip
           id="instagram-github"
           title="Check our Github"
@@ -101,4 +100,4 @@ function HeaderLinks(props) {
   );
 }
 
-export default withRouter((HeaderLinks))
+export default withRouter((HeaderLinksUser))
