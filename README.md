@@ -24,6 +24,8 @@ Quisque eget dolor feugiat, sodales mauris eget, consequat dui. Cras aliquet dia
 - `cd Doar-te`
 - `npm install`
 - You can install with [Bower](https://bower.io/): ```bower install```.
+- If you have vulnerabilities use: `npm audit -fix`
+- `npm start`
 
 
 ## Documentation
