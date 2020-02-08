@@ -27,7 +27,7 @@ function HeaderLinks(props) {
   const classes = useStyles();
 
   async function register() {
-    props.history.push('/login-page');
+    props.history.push('/login');
     }
 
   return (

@@ -45,7 +45,7 @@ function LoginPage(props) {
   async function login() {
 		try {
 			await firebase.login(email, password)
-			props.history.replace('/dashboard-page')
+			props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)
 		}
@@ -136,7 +136,7 @@ function LoginPage(props) {
                     simple color="primary" 
                     fullWidth
                     component={Link}
-						        to="/register-page"
+						        to="/register"
                     size="lg">
                       Register
                     </Button>

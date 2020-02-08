@@ -55,8 +55,10 @@ class Firebase {
 	}
 
 	async getCurrentUserQuote() {
-		const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
-		return quote.get('quote')
+		if(this.auth.currentUser){
+			const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
+			return quote.get('quote')
+		}
 	}
 }
 

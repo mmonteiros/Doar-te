@@ -16,6 +16,7 @@ import ProfilePage from "../views/ProfilePage/ProfilePage.js";
 import LoginPage from "../views/LoginPage/LoginPage.js";
 import Dashboard from "../views/Dashboard/DashboardPage";
 import Register from "../views/Register/RegisterPage";
+import DoarPage from "../views/DoarPage/DoarPage";
 
 const theme = createMuiTheme();
 
@@ -39,9 +40,10 @@ export default function App() {
                 <Switch>
                     <Route path="/landing-page" component={LandingPage} />
                     <Route path="/profile-page" component={ProfilePage} />
-                    <Route path="/login-page" component={LoginPage} />
-                    <Route path="/dashboard-page" component={Dashboard} />
-                    <Route path="/register-page" component={Register} />
+                    <Route path="/login" component={LoginPage} />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/register" component={Register} />
+					<Route path="/doar" component={DoarPage} />
                     <Route path="/" component={Components} />
                 </Switch>
             </Router>
