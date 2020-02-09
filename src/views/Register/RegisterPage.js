@@ -40,7 +40,7 @@ function Register(props) {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [type, setType] = useState('')
-	const [quote, setQuote] = useState('')
+	const [cpf, setCpf] = useState('')
 
 	const inputLabel = React.useRef(null);
 	const [labelWidth, setLabelWidth] = React.useState(0);
@@ -94,10 +94,6 @@ function Register(props) {
 						<InputLabel htmlFor="password">Password</InputLabel>
 						<Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)}  />
 					</FormControl>
-					<FormControl margin="normal" required fullWidth>
-						<InputLabel htmlFor="quote">Your Favorite Quote</InputLabel>
-						<Input name="quote" type="text" id="quote" autoComplete="off" value={quote} onChange={e => setQuote(e.target.value)}  />
-					</FormControl>
 					<br/><br/>
 					<FormControl required variant="outlined" className={classes.formControl}>
 						<InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
@@ -114,8 +110,12 @@ function Register(props) {
 							<em>None</em>
 						</MenuItem>
 						<MenuItem value={"Instituição"}>Instituição</MenuItem>
-						<MenuItem value={"Cliente"}>Cliente</MenuItem>
+						<MenuItem value={"Pessoa"}>Pessoa</MenuItem>
 						</Select>
+					</FormControl>
+					<FormControl margin="normal" required fullWidth>
+						<InputLabel htmlFor="cpf">CPF/CNPJ</InputLabel>
+						<Input name="cpf" type="cpf" id="cpf" autoComplete="off" value={cpf} onChange={e => setCpf(e.target.value)}  />
 					</FormControl>
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
@@ -156,8 +156,7 @@ function Register(props) {
 
 	async function onRegister() {
 		try {
-			await firebase.register(name, email, password)
-			await firebase.addQuote(quote)
+			await firebase.register(name, email, password, cpf)
 			await firebase.addType(type)
 			props.history.replace('/dashboard')
 		} catch(error) {
