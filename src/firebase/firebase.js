@@ -31,7 +31,7 @@ class Firebase {
 		await this.auth.createUserWithEmailAndPassword(email, password)
 		return this.auth.currentUser.updateProfile({
 			displayName: name,
-			displayCPF: cpf
+			displayCPF: cpf,
 		})
 	}
 	
@@ -49,6 +49,13 @@ class Firebase {
 		return new Promise(resolve => {
 			this.auth.onAuthStateChanged(resolve)
 		})
+	}
+
+	async getDataTShirt() {
+		if(this.auth.currentUser){
+			let queryRef = await this.db.collection('users').where('camisa', '==', 'true')
+			return queryRef.get('user');
+		}
 	}
 
 	getCurrentUsername() {
