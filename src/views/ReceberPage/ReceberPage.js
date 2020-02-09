@@ -199,60 +199,6 @@ export default function ReceberPage(props) {
             </Card>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs={6} sm={3}>
-            <Card 
-              onClick={handleOpen}
-              className={classes.card, classes.main, classes.mainRaised}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={calca}
-                    title="Contemplative Reptile"
-                  />
-                </CardActionArea>
-              </Card>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Card 
-              onClick={handleOpen}
-              className={classes.card, classes.main, classes.mainRaised}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={calca}
-                    title="Contemplative Reptile"
-                  />
-                </CardActionArea>
-              </Card>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Card 
-              onClick={handleOpen}
-              className={classes.card, classes.main, classes.mainRaised}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={calca}
-                    title="Contemplative Reptile"
-                  />
-                </CardActionArea>
-              </Card>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Card 
-              onClick={handleOpen}
-              className={classes.card, classes.main, classes.mainRaised}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={calca}
-                    title="Contemplative Reptile"
-                  />
-                </CardActionArea>
-              </Card>
-          </Grid>
-        </Grid>
       </div>
     </div>
   );

@@ -67,6 +67,10 @@ function Dashboard(props) {
 	props.history.push('/doar')
   }
 
+  async function goReceberPage() {
+	props.history.push('/receber')
+  }
+
   
   return (
 	<div>
@@ -138,7 +142,10 @@ function Dashboard(props) {
 						</Typography>
 					}
 					/>
-					<Button className={buttonStyles}>Receber</Button>
+					<Button 
+					onClick={goReceberPage}   
+					className={buttonStyles}
+					>Receber</Button>
 				</CardContent>
 			</Card>
           </GridContainer>
