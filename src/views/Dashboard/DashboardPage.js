@@ -41,7 +41,6 @@ function Dashboard(props) {
 
   const { ...rest } = props;
 
-  const [quote, setQuote] = useState('');
   const [type, setType] = useState('');
 
   const {
@@ -53,10 +52,9 @@ function Dashboard(props) {
 
   useEffect(() =>{
 		if(firebase.getCurrentUsername()) {
-		  firebase.getCurrentUserQuote().then(setQuote)
 		  firebase.getCurrentUserType().then(setType)
 		}
-  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote(), firebase.getCurrentUserType()])
+  }, [firebase.getCurrentUsername(), firebase.getCurrentUserType()])
 		 
   if(!firebase.getCurrentUsername()) {
 		// not logged in
@@ -114,8 +112,6 @@ function Dashboard(props) {
 						<Typography component="h1" variant="h5">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							<br/>
-							Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
-							<br/>
 							Your Type: {type ? `${type}` : <CircularProgress size={20} />}
 						</Typography>
 					}
@@ -142,7 +138,7 @@ function Dashboard(props) {
 						<Typography component="h1" variant="h5">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							<br/>
-							Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
+							Your Type: {type ? `${type}` : <CircularProgress size={20} />}
 						</Typography>
 					}
 					/>

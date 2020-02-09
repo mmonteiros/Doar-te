@@ -27,29 +27,20 @@ class Firebase {
 		return this.auth.signOut()
 	}
 
-	async register(name, email, password) {
+	async register(name, email, password, cpf) {
 		await this.auth.createUserWithEmailAndPassword(email, password)
 		return this.auth.currentUser.updateProfile({
-			displayName: name
-		})
-	}
-
-	addQuote(quote) {
-		if(!this.auth.currentUser) {
-			return alert('Not authorized')
-		}
-
-		return this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).set({
-			quote
+			displayName: name,
+			displayCPF: cpf
 		})
 	}
 	
-	addType(type) {
+	addData(type) {
 		if(!this.auth.currentUser) {
 			return alert('Not authorized')
 		}
 
-		return this.db.doc(`users_type/${this.auth.currentUser.uid}`).set({
+		return this.db.doc(`users/${this.auth.currentUser.uid}`).set({
 			type
 		})
 	}
@@ -64,16 +55,9 @@ class Firebase {
 		return this.auth.currentUser && this.auth.currentUser.displayName
 	}
 
-	async getCurrentUserQuote() {
-		if(this.auth.currentUser){
-			const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
-			return quote.get('quote')
-		}
-	}
-
 	async getCurrentUserType() {
 		if(this.auth.currentUser){
-			const type = await this.db.doc(`users_type/${this.auth.currentUser.uid}`).get()
+			const type = await this.db.doc(`users/${this.auth.currentUser.uid}`).get()
 			return type.get('type')
 		}
 	}

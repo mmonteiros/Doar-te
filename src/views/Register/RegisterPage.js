@@ -157,7 +157,7 @@ function Register(props) {
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password, cpf)
-			await firebase.addType(type)
+			await firebase.addData(type)
 			props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)
