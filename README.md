@@ -1,4 +1,4 @@
-# [Doar-te](https://demos.creative-tim.com/material-kit-react)
+# [Doar-te]
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -165,17 +165,9 @@ At present, we officially aim to support the last two versions of the following 
 
 ## Resources
 - Demo: <https://demos.creative-tim.com/material-kit-react/#/>
-- Download Page: <https://www.creative-tim.com/product/material-kit-react>
 - Documentation: <https://demos.creative-tim.com/material-kit-react/#/documentation/tutorial>
 
 
 ## Licensing
 
 - Licensed under MIT (https://github.com/YodaDevs/Doar-te/blob/master/LICENSE)
-
-
-### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Instagram: <https://www.instagram.com/CreativeTimOfficial>
