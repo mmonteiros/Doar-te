@@ -138,7 +138,7 @@ function Register(props) {
 						variant="contained"
 						color="secondary"
 						component={Link}
-						to="/login-page"
+						to="/login"
 						
 						className={classes.submit}>
 						Go back to Login
