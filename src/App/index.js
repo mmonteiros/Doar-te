@@ -17,6 +17,7 @@ import LoginPage from "../views/LoginPage/LoginPage.js";
 import Dashboard from "../views/Dashboard/DashboardPage";
 import Register from "../views/Register/RegisterPage";
 import DoarPage from "../views/DoarPage/DoarPage";
+import ReceberPage from "../views/ReceberPage/ReceberPage";
 
 const theme = createMuiTheme();
 
@@ -44,6 +45,7 @@ export default function App() {
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/register" component={Register} />
 					<Route path="/doar" component={DoarPage} />
+					<Route path="/receber" component={ReceberPage} />
                     <Route path="/" component={Components} />
                 </Switch>
             </Router>

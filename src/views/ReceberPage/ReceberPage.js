@@ -27,7 +27,7 @@ import calca from "assets/img/examples/calca.jpg";
 
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
-export default function DoarPage(props) {
+export default function ReceberPage(props) {
 
   const list = [
     {

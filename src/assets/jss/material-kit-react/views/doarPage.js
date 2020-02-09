@@ -49,6 +49,9 @@ const useStyles = makeStyles(theme => ({
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper,
     },
+    popover: {
+      pointerEvents: 'none',
+    },
   }));
 
   export default useStyles;
