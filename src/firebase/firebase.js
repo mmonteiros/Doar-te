@@ -43,6 +43,16 @@ class Firebase {
 			quote
 		})
 	}
+	
+	addType(type) {
+		if(!this.auth.currentUser) {
+			return alert('Not authorized')
+		}
+
+		return this.db.doc(`users_type/${this.auth.currentUser.uid}`).set({
+			type
+		})
+	}
 
 	isInitialized() {
 		return new Promise(resolve => {
@@ -58,6 +68,13 @@ class Firebase {
 		if(this.auth.currentUser){
 			const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
 			return quote.get('quote')
+		}
+	}
+
+	async getCurrentUserType() {
+		if(this.auth.currentUser){
+			const type = await this.db.doc(`users_type/${this.auth.currentUser.uid}`).get()
+			return type.get('type')
 		}
 	}
 }

@@ -85,7 +85,14 @@ const signupPageStyle = {
   },
   inputIconsColor: {
     color: "#495057"
-  }
+  },
+  formControl: {
+    margin: 1,
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: 2,
+  },
 };
 
 export default signupPageStyle;

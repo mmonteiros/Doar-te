@@ -42,6 +42,7 @@ function Dashboard(props) {
   const { ...rest } = props;
 
   const [quote, setQuote] = useState('');
+  const [type, setType] = useState('');
 
   const {
     button: buttonStyles,
@@ -53,8 +54,9 @@ function Dashboard(props) {
   useEffect(() =>{
 		if(firebase.getCurrentUsername()) {
 		  firebase.getCurrentUserQuote().then(setQuote)
+		  firebase.getCurrentUserType().then(setType)
 		}
-  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote()])
+  }, [firebase.getCurrentUsername(), firebase.getCurrentUserQuote(), firebase.getCurrentUserType()])
 		 
   if(!firebase.getCurrentUsername()) {
 		// not logged in
@@ -113,6 +115,8 @@ function Dashboard(props) {
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							<br/>
 							Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
+							<br/>
+							Your Type: {type ? `${type}` : <CircularProgress size={20} />}
 						</Typography>
 					}
 					/>
