@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import firebase from "../../firebase/firebase";
@@ -47,6 +47,8 @@ export default function DoarPage(props) {
   const classes = useStyles();
 
   const { ...rest } = props;
+
+  const [register, setRegister] = React.useState([]);
   
   const [open, setOpen] = React.useState(false);
 
@@ -69,7 +71,20 @@ export default function DoarPage(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
+  useEffect(() => {
+    firebase.db.collection("camisas").orderBy('name').get().then(querySnapshot => 
+          querySnapshot.docs.map(doc => {
+            let data = doc.data()
+            return {
+              name: data.name,
+              email: data.email,
+            }
+          })
+         )
+        .then(users => setRegister(users))
+  });
+
   if(!firebase.getCurrentUsername()) {
 		// not logged in
 		alert('Please login first')
@@ -145,14 +160,14 @@ export default function DoarPage(props) {
               <div className={classes.paperModal}>
                 <h2 id="simple-modal-title" align="center" > Camisetas </h2>
                 <List id="simple-modal-description" className={classes.rootList}> 
-                    {list.map (item => (
+                    {register.map (item => (
                       <ListItem>
                         <ListItemAvatar>
                         <Avatar>
                           <ImageIcon />
                         </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={item.firstname} secondary={item.email} />
+                        <ListItemText primary={"Nome:" + item.name} secondary={"E-mail:" +item.email} />
                       </ListItem>
                     ))}     
                 </List>
@@ -256,4 +271,5 @@ export default function DoarPage(props) {
       </div>
     </div>
   );
+
 }
