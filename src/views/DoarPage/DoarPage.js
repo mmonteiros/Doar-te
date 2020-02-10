@@ -21,6 +21,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
+import CardHeader from "components/Card/CardHeader.js";
 
 import camiseta from "assets/img/examples/camiseta.jpg";
 import calca from "assets/img/examples/calca.jpg";
@@ -87,8 +88,13 @@ export default function DoarPage(props) {
       />
       <div className={classes.root, classes.main, classes.mainRaised}>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>xs=12</Paper>
+          <Grid item color="transparent"  xs={12}>
+            <Card color="primary">
+              <CardHeader color="white" >
+              <br/>
+              <h3 align="center">Aqui temos os itens, cliclando neles você poderá contactar as instituições pelo e-mail</h3>
+              </CardHeader>
+            </Card>
           </Grid>
           <Grid item xs={6} sm={3}>
             <Tooltip TransitionComponent={Zoom} title="Camisa">
