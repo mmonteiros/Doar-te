@@ -17,7 +17,11 @@ import LoginPage from "../views/LoginPage/LoginPage.js";
 import Dashboard from "../views/Dashboard/DashboardPage";
 import Register from "../views/Register/RegisterPage";
 import DoarPage from "../views/DoarPage/DoarPage";
+import DoarcamisasPage from "../views/DoarPage/Sections/Camisa";
+import DoarpantsPage from "../views/DoarPage/Sections/Pants";
 import ReceberPage from "../views/ReceberPage/ReceberPage";
+import ReceberCamisaPage from "../views/ReceberPage/Sections/Camisa";
+import ReceberPantsPage from "../views/ReceberPage/Sections/Pants";
 
 const theme = createMuiTheme();
 
@@ -45,7 +49,11 @@ export default function App() {
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/register" component={Register} />
 					<Route path="/doar" component={DoarPage} />
+					<Route path="/doarCamisa" component={DoarcamisasPage} />
+					<Route path="/doarCalca" component={DoarpantsPage} />
 					<Route path="/receber" component={ReceberPage} />
+					<Route path="/receberCamisa" component={ReceberCamisaPage} />
+					<Route path="/receberCalca" component={ReceberPantsPage} />
                     <Route path="/" component={Components} />
                 </Switch>
             </Router>

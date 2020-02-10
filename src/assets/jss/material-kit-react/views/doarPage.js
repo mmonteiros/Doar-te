@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+import tooltip from "assets/jss/material-kit-react/tooltipsStyle.js";
+
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
@@ -51,6 +53,10 @@ const useStyles = makeStyles(theme => ({
     },
     popover: {
       pointerEvents: 'none',
+    },
+    ...tooltip,
+    marginRight5: {
+      marginRight: "5px"
     },
   }));
 
