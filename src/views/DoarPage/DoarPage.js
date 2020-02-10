@@ -87,8 +87,7 @@ export default function DoarPage(props) {
 
   if(!firebase.getCurrentUsername()) {
 		// not logged in
-		alert('Please login first')
-		props.history.replace('/login')
+		props.history.replace('/')
 		return null
   }
 
