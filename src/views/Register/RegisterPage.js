@@ -46,6 +46,10 @@ function Register(props) {
 		camisas: false,
 		calcas: false,
 	});
+	const [receber, setReceber] = useState({
+		camisas: false,
+		calcas: false,
+	});
 
 	const inputLabel = React.useRef(null);
 	const [labelWidth, setLabelWidth] = React.useState(0);
@@ -61,6 +65,10 @@ function Register(props) {
 	const handleChangeDoar = name => event => {
 		setDoar({ ...doar,[name]: event.target.checked });
 	  };
+
+	const handleChangeReceber = name => event => {
+		setReceber({ ...receber,[name]: event.target.checked });
+	};
 
 	return (
 		<div>
@@ -138,6 +146,15 @@ function Register(props) {
 							control={<Switch checked={doar.calcas} onChange={handleChangeDoar('calcas')} value="calcas" />}
 							label="Calças"
 						/>
+						<FormLabel component="legend">Sua instituição deseja receber doações</FormLabel>
+						<FormControlLabel
+							control={<Switch checked={receber.Rcamisas} onChange={handleChangeReceber('camisas')} value="camisas" />}
+							label="Camisas"
+						/>		
+						<FormControlLabel
+							control={<Switch checked={receber.Rcalcas} onChange={handleChangeReceber('calcas')} value="calcas" />}
+							label="Calças"
+						/>
 					</div>
 					}
                   </CardBody>
@@ -180,7 +197,7 @@ function Register(props) {
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password, cpf)
-			await firebase.addData(type, doar.camisas, doar.calcas)
+			await firebase.addData(type, doar.camisas, doar.calcas, receber.camisas, receber.calcas)
 			props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)

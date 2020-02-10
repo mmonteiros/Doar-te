@@ -62,7 +62,7 @@ const ProfileCard = () => {
       <CardContent>
         <Avatar className={styles.avatar} src={'https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg'} />
         <h3 className={styles.heading}> { firebase.getCurrentUsername() }</h3>
-        <span className={styles.subheader}>Brasil</span>
+        <span className={styles.subheader}>{ firebase.getCurrentUseremail() }</span>
       </CardContent>
       <Divider light /> 
     </Card>

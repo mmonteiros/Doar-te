@@ -35,7 +35,7 @@ export default function Camisa(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("camisas").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("ReceberCamisas").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {

@@ -35,7 +35,7 @@ class Firebase {
 		})
 	}
 	
-	addData(type, camisa, calca) {
+	addData(type, camisa, calca, receberCamisas, receberCalcas) {
 		if(!this.auth.currentUser) {
 			return alert('Not authorized')
 		};
@@ -51,7 +51,18 @@ class Firebase {
 			name: this.auth.currentUser.displayName,
 			email: this.auth.currentUser.email,
 		})};
-		
+
+		if(receberCamisas){
+			this.db.doc(`ReceberCamisas/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(receberCalcas){
+			this.db.doc(`ReceberCalca/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
 
 		return this.db.doc(`users/${this.auth.currentUser.uid}`).set({
 			type
@@ -66,6 +77,10 @@ class Firebase {
 
 	getCurrentUsername() {
 		return this.auth.currentUser && this.auth.currentUser.displayName
+	}
+
+	getCurrentUseremail() {
+		return this.auth.currentUser && this.auth.currentUser.email
 	}
 	
 

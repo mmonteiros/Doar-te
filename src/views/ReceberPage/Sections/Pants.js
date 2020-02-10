@@ -36,7 +36,7 @@ export default function Pants(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("calca").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("ReceberCalca").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {
