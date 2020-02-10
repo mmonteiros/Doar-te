@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputLabel, MenuItem, FormHelperText,  FormControl, Select, Input } from '@material-ui/core'
+import { InputLabel, MenuItem,FormGroup,FormLabel , FormControlLabel, Switch, FormHelperText,  FormControl, Select, Input } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import firebase from '../../firebase/firebase'
@@ -16,6 +16,7 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
+
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -41,6 +42,14 @@ function Register(props) {
 	const [password, setPassword] = useState('')
 	const [type, setType] = useState('')
 	const [cpf, setCpf] = useState('')
+	const [doar, setDoar] = useState({
+		camisas: false,
+		calcas: false,
+	});
+	const [receber, setReceber] = useState({
+		camisas: false,
+		calcas: false,
+	});
 
 	const inputLabel = React.useRef(null);
 	const [labelWidth, setLabelWidth] = React.useState(0);
@@ -49,8 +58,16 @@ function Register(props) {
 		setLabelWidth(inputLabel.current.offsetWidth);
 	}, []);
 
-	const handleChange = event => {
+	const handleChangeType = event => {
 		setType(event.target.value);
+	};
+
+	const handleChangeDoar = name => event => {
+		setDoar({ ...doar,[name]: event.target.checked });
+	  };
+
+	const handleChangeReceber = name => event => {
+		setReceber({ ...receber,[name]: event.target.checked });
 	};
 
 	return (
@@ -94,6 +111,10 @@ function Register(props) {
 						<InputLabel htmlFor="password">Senha</InputLabel>
 						<Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)}  />
 					</FormControl>
+					<FormControl margin="normal" required fullWidth>
+						<InputLabel htmlFor="cpf">CPF/CNPJ</InputLabel>
+						<Input name="cpf" type="cpf" id="cpf" autoComplete="off" value={cpf} onChange={e => setCpf(e.target.value)}  />
+					</FormControl>
 					<br/><br/>
 					<FormControl required variant="outlined" className={classes.formControl}>
 						<InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
@@ -103,7 +124,7 @@ function Register(props) {
 							labelId="demo-simple-select-outlined-label"
 							id="demo-simple-select-outlined"
 							value={type}
-							onChange={handleChange, e => setType(e.target.value) }
+							onChange={handleChangeType, e => setType(e.target.value) }
 							labelWidth={labelWidth}
 						>
 						<MenuItem value="">
@@ -113,10 +134,29 @@ function Register(props) {
 						<MenuItem value={"Pessoa"}>Pessoa</MenuItem>
 						</Select>
 					</FormControl>
-					<FormControl margin="normal" required fullWidth>
-						<InputLabel htmlFor="cpf">CPF/CNPJ</InputLabel>
-						<Input name="cpf" type="cpf" id="cpf" autoComplete="off" value={cpf} onChange={e => setCpf(e.target.value)}  />
-					</FormControl>
+					<br/><br/>
+					{type == "Instituição" &&
+					<div>
+						<FormLabel component="legend">Disponibilzar para doação</FormLabel>
+						<FormControlLabel
+							control={<Switch checked={doar.camisas} onChange={handleChangeDoar('camisas')} value="camisas" />}
+							label="Camisas"
+						/>		
+						<FormControlLabel
+							control={<Switch checked={doar.calcas} onChange={handleChangeDoar('calcas')} value="calcas" />}
+							label="Calças"
+						/>
+						<FormLabel component="legend">Sua instituição deseja receber doações</FormLabel>
+						<FormControlLabel
+							control={<Switch checked={receber.Rcamisas} onChange={handleChangeReceber('camisas')} value="camisas" />}
+							label="Camisas"
+						/>		
+						<FormControlLabel
+							control={<Switch checked={receber.Rcalcas} onChange={handleChangeReceber('calcas')} value="calcas" />}
+							label="Calças"
+						/>
+					</div>
+					}
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
 				  	<Button
@@ -157,7 +197,7 @@ function Register(props) {
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password, cpf)
-			await firebase.addData(type)
+			await firebase.addData(type, doar.camisas, doar.calcas, receber.camisas, receber.calcas)
 			props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)

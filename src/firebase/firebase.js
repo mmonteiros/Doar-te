@@ -35,10 +35,34 @@ class Firebase {
 		})
 	}
 	
-	addData(type) {
+	addData(type, camisa, calca, receberCamisas, receberCalcas) {
 		if(!this.auth.currentUser) {
 			return alert('Not authorized')
-		}
+		};
+
+		if(camisa) {
+			this.db.doc(`camisas/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(calca) {
+			this.db.doc(`calca/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(receberCamisas){
+			this.db.doc(`ReceberCamisas/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(receberCalcas){
+			this.db.doc(`ReceberCalca/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
 
 		return this.db.doc(`users/${this.auth.currentUser.uid}`).set({
 			type
@@ -51,16 +75,14 @@ class Firebase {
 		})
 	}
 
-	async getDataTShirt() {
-		if(this.auth.currentUser){
-			let queryRef = await this.db.collection('users').where('camisa', '==', 'true')
-			return queryRef.get('user');
-		}
-	}
-
 	getCurrentUsername() {
 		return this.auth.currentUser && this.auth.currentUser.displayName
 	}
+
+	getCurrentUseremail() {
+		return this.auth.currentUser && this.auth.currentUser.email
+	}
+	
 
 	async getCurrentUserType() {
 		if(this.auth.currentUser){
