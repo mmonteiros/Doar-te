@@ -19,8 +19,8 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 
 import camiseta from "assets/img/examples/camiseta.jpg";
 import calca from "assets/img/examples/calca.jpg";
@@ -28,21 +28,6 @@ import calca from "assets/img/examples/calca.jpg";
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
 export default function DoarPage(props) {
-
-  const list = [
-    {
-      id: 'a',
-      firstname: 'Robin',
-      lastname: 'Wieruch',
-      email: "robin@gmail.com",
-    },
-    {
-      id: 'b',
-      firstname: 'Dave',
-      lastname: 'Davidds',
-      email: "dave@gmail.com",
-    },
-  ];
 
   const classes = useStyles();
 
@@ -106,43 +91,24 @@ export default function DoarPage(props) {
             <Paper className={classes.paper}>xs=12</Paper>
           </Grid>
           <Grid item xs={6} sm={3}>
-          <Card
-          aria-owns={open ? 'mouse-over-popover' : undefined}
-          aria-haspopup="true"
-          onMouseEnter={handlePopoverOpen}
-          onMouseLeave={handlePopoverClose} 
-          onClick={handleOpen}
-          className={classes.card, classes.main, classes.mainRaised}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={camiseta}
-                title="Contemplative Reptile"
-              />
-            </CardActionArea>
-          </Card>
+            <Tooltip TransitionComponent={Zoom} title="Camisa">
+              <Card
+              aria-owns={open ? 'mouse-over-popover' : undefined}
+              aria-haspopup="true"
+              onMouseEnter={handlePopoverOpen}
+              onMouseLeave={handlePopoverClose} 
+              onClick={handleOpen}
+              className={classes.card, classes.main, classes.mainRaised}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image={camiseta}
+                    title="Camisa"
+                  />
+                </CardActionArea>
+              </Card>
+              </Tooltip>
           </Grid>
-          <Popover
-            id="mouse-over-popover"
-            className={classes.popover}
-            classes={{
-              paper: classes.paper,
-            }}
-            open={openPopever}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            onClose={handlePopoverClose}
-            disableRestoreFocus
-          >
-            <Typography>Camisa</Typography>
-          </Popover>
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
