@@ -77,27 +77,27 @@ function Register(props) {
                 <form className={classes.form} onSubmit={e => e.preventDefault() && false} >
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <br/>
-					<h3>Register</h3>
+					<h3>Registrar</h3>
 					<br/>
                   </CardHeader>
-                  <p className={classes.divider}>Be Classical</p>   
+                  <p className={classes.divider}>Preencha as informações abaixo</p>   
                   <CardBody>
 				  	<FormControl margin="normal" required fullWidth>
-						<InputLabel htmlFor="name">Name</InputLabel>
+						<InputLabel htmlFor="name">Nome</InputLabel>
 						<Input id="name" name="name" autoComplete="off" autoFocus value={name} onChange={e => setName(e.target.value)} />
 					</FormControl>
 					<FormControl margin="normal" required fullWidth>
-						<InputLabel htmlFor="email">Email Address</InputLabel>
+						<InputLabel htmlFor="email">E-mail</InputLabel>
 						<Input id="email" name="email" autoComplete="off" value={email} onChange={e => setEmail(e.target.value)}  />
 					</FormControl>
 					<FormControl margin="normal" required fullWidth>
-						<InputLabel htmlFor="password">Password</InputLabel>
+						<InputLabel htmlFor="password">Senha</InputLabel>
 						<Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)}  />
 					</FormControl>
 					<br/><br/>
 					<FormControl required variant="outlined" className={classes.formControl}>
 						<InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-							Type
+							Tipo
 						</InputLabel>
 						<Select
 							labelId="demo-simple-select-outlined-label"
@@ -127,7 +127,7 @@ function Register(props) {
 						onClick={onRegister}
 						simple
 						className={classes.submit}>
-						Register
+						Registrar
           			</Button>
                   </CardFooter>
                  
@@ -141,7 +141,7 @@ function Register(props) {
 						to="/login"
 						
 						className={classes.submit}>
-						Go back to Login
+						Voltar para Login
           			</Button>
                   </CardFooter>
                 </form>
