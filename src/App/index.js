@@ -10,7 +10,7 @@ import firebase from '../firebase'
 import { createBrowserHistory } from "history";
 
 // pages for this product
-import Home from "../views/Components/Home";
+import Home from "../views/HomePage/Home";
 import LoginPage from "../views/LoginPage/LoginPage.js";
 import Dashboard from "../views/Dashboard/DashboardPage";
 import Register from "../views/Register/RegisterPage";

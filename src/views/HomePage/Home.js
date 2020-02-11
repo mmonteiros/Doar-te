@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
