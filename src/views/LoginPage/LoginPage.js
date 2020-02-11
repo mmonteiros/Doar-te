@@ -79,12 +79,12 @@ function LoginPage(props) {
                   
                   <CardBody>
                   <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="email">Email Address</InputLabel>
+                    <InputLabel htmlFor="email">E-mail</InputLabel>
 						        <Input id="email" name="email" autoComplete="on" autoFocus value={email} onChange={e => setEmail(e.target.value)} />
                   </FormControl>
 
                   <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="password">Password</InputLabel>
+                    <InputLabel htmlFor="password">Senha</InputLabel>
 						        <Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)} />
                   </FormControl>
 
@@ -108,7 +108,7 @@ function LoginPage(props) {
                     component={Link}
 						        to="/register"
                     size="lg">
-                      Register
+                      Cadastrar
                     </Button>
                   </CardFooter>
                 </form>

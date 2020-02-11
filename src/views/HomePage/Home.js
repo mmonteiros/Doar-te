@@ -2,8 +2,6 @@ import React from "react";
 import cx from 'clsx';
 // nodejs library that concatenates classes
 import classNames from "classnames";
-// react components for routing our app without refresh
-import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -11,7 +9,6 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Grid from '@material-ui/core/Grid';
 
@@ -59,7 +56,7 @@ export default function Components(props) {
         }}
         {...rest}
       />
-      <Parallax image={require("assets/img/bg2.jpg")}>
+      <Parallax image={require("assets/img/examples/hand2.jpg")}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
@@ -81,7 +78,7 @@ export default function Components(props) {
           <CardMedia
             className={classesCard.media}
             image={
-            'https://s3.amazonaws.com/lilianpacce/wp-content/uploads/2017/11/271117-dia-de-doar1.jpg'
+            'https://jpimg.com.br/uploads/2018/11/hand-1549132_1280-1024x768.jpg'
             }
           />
           <CardContent>
@@ -91,7 +88,7 @@ export default function Components(props) {
             heading={''}
             body={
               <Typography component="h1" variant="h5">
-                Vamos, aqui você encontrará 
+                Contribua com sua doação \o/ 
                 <br/><br/>
                 
               </Typography>
@@ -106,7 +103,7 @@ export default function Components(props) {
           <CardMedia
             className={classesCard.media}
             image={
-            'https://lilianmendanha.com.br/wp-content/uploads/2017/04/receber.jpg'
+            'https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2017/07/formacao_1600x1200-valor-da-solidariedade.jpg'
             }
           />
           <CardContent>
@@ -116,7 +113,7 @@ export default function Components(props) {
             heading={''}
             body={
               <Typography component="h1" variant="h5">
-                Venha e encontre itens
+                Veja as instituições presentes
                 <br/><br/>
               </Typography>
             }
@@ -130,7 +127,7 @@ export default function Components(props) {
           <CardMedia
             className={classesCard.media}
             image={
-            'https://lilianmendanha.com.br/wp-content/uploads/2017/04/receber.jpg'
+            'https://images.pexels.com/photos/1912868/pexels-photo-1912868.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
             }
           />
           <CardContent>
@@ -140,7 +137,7 @@ export default function Components(props) {
             heading={''}
             body={
               <Typography component="h1" variant="h5">
-                Venha e encontre itens
+                E torne o próximo feliz
                 <br/><br/>
               </Typography>
             }
