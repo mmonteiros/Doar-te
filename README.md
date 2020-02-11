@@ -2,7 +2,7 @@
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Projeto desenvolvido por: Aristoteles Peixoto Barros e Mateus Monteiro Santos
+**Projeto desenvolvido por:** ***Aristoteles Peixoto Barros*** e ***Mateus Monteiro Santos***
 
 A necessidade de doações dos mais variados modos se tornou imprescindível nos tempos atuais. Sendo assim, instituições vêm fazendo um trabalho constante em relação ao acolhimento desses materiais e doações dos mesmos para usuários que necessitam desses bens. Com isso, um sistema que possa agilizar, facilitar e ser prático ao mesmo tempo que realiza essas funções, torna-se uma aplicação que poderá favorecer toda sociedade.
 
