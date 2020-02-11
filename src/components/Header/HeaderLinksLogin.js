@@ -45,11 +45,7 @@ function HeaderLinksLogin(props) {
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-github"
-<<<<<<< HEAD
           title="Veja nosso Github"
-=======
-          title="Visite nosso Github"
->>>>>>> 1030d923ee42d92f06de45483c6c2e9c10e50ff7
           placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes.tooltip }}
         >
