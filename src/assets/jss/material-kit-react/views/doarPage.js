@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { deepOrange, green } from '@material-ui/core/colors';
 
 import tooltip from "assets/jss/material-kit-react/tooltipsStyle.js";
 
@@ -57,6 +58,14 @@ const useStyles = makeStyles(theme => ({
     ...tooltip,
     marginRight5: {
       marginRight: "5px"
+    },
+    square: {
+      color: theme.palette.getContrastText(deepOrange[500]),
+      backgroundColor: deepOrange[500],
+    },
+    rounded: {
+      color: '#fff',
+      backgroundColor: green[500],
     },
   }));
 

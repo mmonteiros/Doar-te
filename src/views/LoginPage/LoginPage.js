@@ -3,9 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import { FormControl, Input, InputLabel } from '@material-ui/core'
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinksLogin from "components/Header/HeaderLinksLogin";
@@ -17,7 +15,6 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -74,38 +71,11 @@ function LoginPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form} onSubmit={e => e.preventDefault() && false} >
                   <CardHeader color="primary" className={classes.cardHeader}>
-                    <h4>Login</h4>
-                    <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-twitter"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-facebook"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-google-plus-g"} />
-                      </Button>
-                    </div>
+                    <br/>
+                    <h3>Login</h3>
+                    <br/>
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
+                  <p className={classes.divider}>Vamos Doar \o/</p>
                   
                   <CardBody>
                   <FormControl margin="normal" required fullWidth>

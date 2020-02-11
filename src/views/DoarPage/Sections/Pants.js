@@ -15,7 +15,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import CardHeader from "components/Card/CardHeader.js";
@@ -36,7 +36,7 @@ export default function Pants(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("calca").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("pants").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {
@@ -117,8 +117,8 @@ export default function Pants(props) {
                     {register.map (item => (
                       <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
-                          <ImageIcon />
+                        <Avatar variant="rounded" className={classes.rounded}>
+                          <AssignmentIcon />
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={"Nome: " + item.name} secondary={"E-mail: " +item.email} />

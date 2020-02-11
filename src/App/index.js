@@ -10,18 +10,28 @@ import firebase from '../firebase'
 import { createBrowserHistory } from "history";
 
 // pages for this product
-import Components from "../views/Components/Components";
-import LandingPage from "../views/LandingPage/LandingPage.js";
-import ProfilePage from "../views/ProfilePage/ProfilePage.js";
+import Home from "../views/Components/Home";
 import LoginPage from "../views/LoginPage/LoginPage.js";
 import Dashboard from "../views/Dashboard/DashboardPage";
 import Register from "../views/Register/RegisterPage";
 import DoarPage from "../views/DoarPage/DoarPage";
-import DoarcamisasPage from "../views/DoarPage/Sections/Camisa";
-import DoarpantsPage from "../views/DoarPage/Sections/Pants";
+import DoarShirtPage from "../views/DoarPage/Sections/Shirt";
+import DoarPantsPage from "../views/DoarPage/Sections/Pants";
+import DoarBloodPage from "../views/DoarPage/Sections/Blood";
+import DoarBooksPage from "../views/DoarPage/Sections/Books";
+import DoarFoodPage from "../views/DoarPage/Sections/Food";
+import DoarHygienePage from "../views/DoarPage/Sections/Hygiene";
+import DoarMedulaPage from "../views/DoarPage/Sections/Medula";
+import DoarToysPage from "../views/DoarPage/Sections/Toys";
 import ReceberPage from "../views/ReceberPage/ReceberPage";
-import ReceberCamisaPage from "../views/ReceberPage/Sections/Camisa";
+import ReceberShirtPage from "../views/ReceberPage/Sections/Shirt";
 import ReceberPantsPage from "../views/ReceberPage/Sections/Pants";
+import ReceberBloodPage from "../views/ReceberPage/Sections/Blood";
+import ReceberMedulaPage from "../views/ReceberPage/Sections/Medula";
+import ReceberToysPage from "../views/ReceberPage/Sections/Toys";
+import ReceberBooksPage from "../views/ReceberPage/Sections/Books";
+import ReceberFoodPage from "../views/ReceberPage/Sections/Food";
+import ReceberHygienePage from "../views/ReceberPage/Sections/Hygiene";
 
 const theme = createMuiTheme();
 
@@ -43,18 +53,28 @@ export default function App() {
 			<CssBaseline />
 			<Router history={hist}>
                 <Switch>
-                    <Route path="/landing-page" component={LandingPage} />
-                    <Route path="/profile-page" component={ProfilePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/register" component={Register} />
 					<Route path="/doar" component={DoarPage} />
-					<Route path="/doarCamisa" component={DoarcamisasPage} />
-					<Route path="/doarCalca" component={DoarpantsPage} />
+					<Route path="/doarShirt" component={DoarShirtPage} />
+					<Route path="/doarPants" component={DoarPantsPage} />
+					<Route path="/doarBlood" component={DoarBloodPage} />
+					<Route path="/doarBooks" component={DoarBooksPage} />
+					<Route path="/doarFood" component={DoarFoodPage} />
+					<Route path="/doarHygiene" component={DoarHygienePage} />
+					<Route path="/doarMedula" component={DoarMedulaPage} />
+					<Route path="/doarToys" component={DoarToysPage} />
 					<Route path="/receber" component={ReceberPage} />
-					<Route path="/receberCamisa" component={ReceberCamisaPage} />
-					<Route path="/receberCalca" component={ReceberPantsPage} />
-                    <Route path="/" component={Components} />
+					<Route path="/receberShirt" component={ReceberShirtPage} />
+					<Route path="/receberPants" component={ReceberPantsPage} />
+					<Route path="/receberBlood" component={ReceberBloodPage} />
+					<Route path="/receberMedula" component={ReceberMedulaPage} />
+					<Route path="/receberToys" component={ReceberToysPage} />
+					<Route path="/receberBooks" component={ReceberBooksPage} />
+					<Route path="/receberFood" component={ReceberFoodPage} />
+					<Route path="/receberHygiene" component={ReceberHygienePage} />
+                    <Route path="/" component={Home} />
                 </Switch>
             </Router>
 		</MuiThemeProvider>
