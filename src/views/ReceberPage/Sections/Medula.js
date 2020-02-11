@@ -21,13 +21,14 @@ import Zoom from '@material-ui/core/Zoom';
 import CardHeader from "components/Card/CardHeader.js";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import calca from "assets/img/examples/calca.jpg";
+import medula from "assets/img/examples/medula.jpg";
+
 import image from "assets/img/bg7.jpg";
 
 
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
-export default function Pants(props) {
+export default function Medula(props) {
 
   const classes = useStyles();
 
@@ -36,7 +37,7 @@ export default function Pants(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("rePants").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("reMedula").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {
@@ -94,7 +95,7 @@ export default function Pants(props) {
           <Grid item xs={6} sm={3}>
             <Tooltip 
             id="Calca-tooltip"
-            title="Instituições que disponbilizam calças"
+            title="Instituições que disponbilizam medula óssea com procedimento de recuperação"
             placement={window.innerWidth > 959 ? "bottom" : "right"}
             classes={{ tooltip: classes.tooltip }}
             TransitionComponent={Zoom}>
@@ -103,8 +104,8 @@ export default function Pants(props) {
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={calca}
-                    title="Camisa"
+                    image={medula}
+                    title="Medula Óssea"
                   />
                 </CardActionArea>
               </Card>
@@ -112,7 +113,7 @@ export default function Pants(props) {
           </Grid>
           
               <div className={classes.paperModal}>
-                <h2 id="simple-modal-title" align="center" > Calças </h2>
+                <h2 id="simple-modal-title" align="center" > Medula Óssea </h2>
                 <List id="simple-modal-description" className={classes.rootList}> 
                     {register.map (item => (
                       <ListItem>

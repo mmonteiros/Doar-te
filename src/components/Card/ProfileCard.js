@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
@@ -53,10 +52,12 @@ const useStyles = makeStyles(({ palette }) => ({
 const ProfileCard = () => {
   const styles = useStyles();
   const shadowStyles = useFadedShadowStyles();
+
   const borderedGridStyles = useGutterBorderedGridStyles({
     borderColor: 'rgba(0, 0, 0, 0.08)',
     height: '50%',
   });
+
   return (
     <Card className={cx(styles.card, shadowStyles.root)}>
       <CardContent>

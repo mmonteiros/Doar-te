@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import cx from 'clsx';
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, CircularProgress, FormControl, Input, InputLabel } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinksUser from "components/Header/HeaderLinksUser";
@@ -20,6 +18,7 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
+
 import { useBlogCardContentStyles } from '@mui-treasury/styles/cardContent/blog';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
 import TextInfoCardContent from '@mui-treasury/components/cardContent/textInfo';
@@ -41,20 +40,12 @@ function Dashboard(props) {
 
   const { ...rest } = props;
 
-  const [type, setType] = useState('');
-
   const {
     button: buttonStyles,
     ...cardContentStyles
   } = useBlogCardContentStyles();
 
   const shadowStyles = useOverShadowStyles();
-
-  useEffect(() =>{
-		if(firebase.getCurrentUsername()) {
-		  firebase.getCurrentUserType().then(setType)
-		}
-  }, [firebase.getCurrentUsername(), firebase.getCurrentUserType()])
 		 
   if(!firebase.getCurrentUsername()) {
 		// not logged in
@@ -110,9 +101,9 @@ function Dashboard(props) {
 					heading={''}
 					body={
 						<Typography component="h1" variant="h5">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							<br/>
-							Your Type: {type ? `${type}` : <CircularProgress size={20} />}
+							Vamos, aqui você encontrará itens para doar nas instituições cadastradas \o/
+							<br/><br/>
+							
 						</Typography>
 					}
 					/>
@@ -136,9 +127,8 @@ function Dashboard(props) {
 					heading={''}
 					body={
 						<Typography component="h1" variant="h5">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							<br/>
-							Your Type: {type ? `${type}` : <CircularProgress size={20} />}
+							Venha e encontre itens para receber das nossas instituições cadastradas (^^,)
+							<br/><br/>
 						</Typography>
 					}
 					/>

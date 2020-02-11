@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import firebase from "../../firebase/firebase";
 
@@ -16,6 +16,12 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import camiseta from "assets/img/examples/camiseta.jpg";
 import calca from "assets/img/examples/calca.jpg";
+import blood from "assets/img/examples/blood.png";
+import books from "assets/img/examples/books.png";
+import food from "assets/img/examples/food.png";
+import hygiene from "assets/img/examples/Hygiene.jpg";
+import medula from "assets/img/examples/medula.jpg";
+import toys from "assets/img/examples/toys.jpg";
 
 import image from "assets/img/bg7.jpg";
 
@@ -33,9 +39,9 @@ export default function DoarPage(props) {
 		return null
   }
 
-  async function goCamisa() {
+  async function goShirt() {
 		try {
-			props.history.push('/doarCamisa')
+			props.history.push('/doarShirt')
 		} catch(error) {
 			alert(error.message)
 		}
@@ -43,7 +49,55 @@ export default function DoarPage(props) {
 
   async function goPants() {
 		try {
-			props.history.push('/doarCalca')
+			props.history.push('/doarPants')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+
+  async function goBlood() {
+		try {
+			props.history.push('/doarBlood')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+
+  async function goFood() {
+		try {
+			props.history.push('/doarFood')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+
+  async function goBooks() {
+		try {
+			props.history.push('/doarBooks')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+
+  async function goHygiene() {
+		try {
+			props.history.push('/doarHygiene')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+
+  async function goMedula() {
+		try {
+			props.history.push('/doarMedula')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
+  
+  async function goToys() {
+		try {
+			props.history.push('/doarToys')
 		} catch(error) {
 			alert(error.message)
 		}
@@ -79,7 +133,7 @@ export default function DoarPage(props) {
             <ArrowBackIcon  onClick={goDashPage} />
               <CardHeader color="white" >
               <br/>
-              <h3 align="center">O que você quer doar?</h3>
+              <h3 align="center">Doe algum desses itens, obrigado!!!</h3>
               </CardHeader>
             </Card>
           </Grid>
@@ -94,7 +148,7 @@ export default function DoarPage(props) {
             classes={{ tooltip: classes.tooltip }}
             TransitionComponent={Zoom}>
               <Card
-              onClick={goCamisa}
+              onClick={goShirt}
               className={classes.card, classes.main, classes.mainRaised}>
                 <CardActionArea>
                   <CardMedia
@@ -107,6 +161,132 @@ export default function DoarPage(props) {
               </Tooltip>
           </Grid>
           
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Toys-tooltip"
+            title="Instituições que disponbilizam brinquedos"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goToys}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={toys}
+                  title="Toys"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Blood-tooltip"
+            title="Instituições que disponbilizam sangue para transfusão"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goBlood}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={blood}
+                  title="Blood"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Books-tooltip"
+            title="Instituições que disponbilizam livros"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goBooks}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={books}
+                  title="Books"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Food-tooltip"
+            title="Instituições que disponbilizam kit de comidas"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goFood}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={food}
+                  title="Comida"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Hygiene-tooltip"
+            title="Instituições que disponbilizam kit de higiene"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goHygiene}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={hygiene}
+                  title="Higiene"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
+
+          <Grid item xs={6} sm={3}>
+          <Tooltip 
+            id="Medula-tooltip"
+            title="Instituições que disponbilizam medula óssea com procedimento de recuperação"
+            placement={window.innerWidth > 959 ? "bottom" : "right"}
+            classes={{ tooltip: classes.tooltip }}
+            TransitionComponent={Zoom}>
+            <Card 
+            onClick={goMedula}
+            className={classes.card, classes.main, classes.mainRaised}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={medula}
+                  title="Medula"
+                />
+              </CardActionArea>
+            </Card>
+          </Tooltip>
+          </Grid>
 
           <Grid item xs={6} sm={3}>
           <Tooltip 
@@ -130,33 +310,6 @@ export default function DoarPage(props) {
           </Grid>
 
 
-          <Grid item xs={6} sm={3}>
-            <Card 
-            className={classes.card, classes.main, classes.mainRaised}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={camiseta}
-                  title="Contemplative Reptile"
-                />
-              </CardActionArea>
-            </Card>
-          </Grid>
-
-          
-
-          <Grid item xs={6} sm={3}>
-            <Card 
-            className={classes.card, classes.main, classes.mainRaised}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={camiseta}
-                  title="Contemplative Reptile"
-                />
-              </CardActionArea>
-            </Card>
-          </Grid>
         </Grid>
       </div>
     </div>

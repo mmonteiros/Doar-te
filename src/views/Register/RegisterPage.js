@@ -43,12 +43,24 @@ function Register(props) {
 	const [type, setType] = useState('')
 	const [cpf, setCpf] = useState('')
 	const [doar, setDoar] = useState({
-		camisas: false,
-		calcas: false,
+		shirt: false,
+		pants: false,
+		blood: false,
+		medula: false,
+		toys: false,
+		books: false,
+		food: false,
+		hygiene: false,
 	});
 	const [receber, setReceber] = useState({
-		camisas: false,
-		calcas: false,
+		shirt: false,
+		pants: false,
+		blood: false,
+		medula: false,
+		toys: false,
+		books: false,
+		food: false,
+		hygiene: false,
 	});
 
 	const inputLabel = React.useRef(null);
@@ -139,21 +151,70 @@ function Register(props) {
 					<div>
 						<FormLabel component="legend">Disponibilzar para doação</FormLabel>
 						<FormControlLabel
-							control={<Switch checked={doar.camisas} onChange={handleChangeDoar('camisas')} value="camisas" />}
+							control={<Switch checked={doar.shirt} onChange={handleChangeDoar('shirt')} value="shirt" />}
 							label="Camisas"
 						/>		
 						<FormControlLabel
-							control={<Switch checked={doar.calcas} onChange={handleChangeDoar('calcas')} value="calcas" />}
+							control={<Switch checked={doar.pants} onChange={handleChangeDoar('pants')} value="pants" />}
 							label="Calças"
 						/>
+						<FormControlLabel
+							control={<Switch checked={doar.blood} onChange={handleChangeDoar('blood')} value="blood" />}
+							label="Coleta de sangue"
+						/>
+						<FormControlLabel
+							control={<Switch checked={doar.medula} onChange={handleChangeDoar('medula')} value="medula" />}
+							label="Doação de Medula Ossea"
+						/>
+						<FormControlLabel
+							control={<Switch checked={doar.toys} onChange={handleChangeDoar('toys')} value="toys" />}
+							label="Brinquedos"
+						/>
+						<FormControlLabel
+							control={<Switch checked={doar.books} onChange={handleChangeDoar('books')} value="books" />}
+							label="Livros"
+						/>
+						<FormControlLabel
+							control={<Switch checked={doar.food} onChange={handleChangeDoar('food')} value="food" />}
+							label="Comida"
+						/>
+						<FormControlLabel
+							control={<Switch checked={doar.hygiene} onChange={handleChangeDoar('hygiene')} value="hygiene" />}
+							label="Produtos de Higiene"
+						/>
+						<br/><br/>
 						<FormLabel component="legend">Sua instituição deseja receber doações</FormLabel>
 						<FormControlLabel
-							control={<Switch checked={receber.Rcamisas} onChange={handleChangeReceber('camisas')} value="camisas" />}
+							control={<Switch checked={receber.shirt} onChange={handleChangeReceber('shirt')} value="shirt" />}
 							label="Camisas"
 						/>		
 						<FormControlLabel
-							control={<Switch checked={receber.Rcalcas} onChange={handleChangeReceber('calcas')} value="calcas" />}
+							control={<Switch checked={receber.pants} onChange={handleChangeReceber('pants')} value="pants" />}
 							label="Calças"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.blood} onChange={handleChangeReceber('blood')} value="blood" />}
+							label="Coleta de sangue"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.medula} onChange={handleChangeReceber('medula')} value="medula" />}
+							label="Doação de Medula Ossea"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.toys} onChange={handleChangeReceber('toys')} value="toys" />}
+							label="Brinquedos"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.books} onChange={handleChangeReceber('books')} value="books" />}
+							label="Livros"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.food} onChange={handleChangeReceber('food')} value="food" />}
+							label="Comida"
+						/>
+						<FormControlLabel
+							control={<Switch checked={receber.hygiene} onChange={handleChangeReceber('hygiene')} value="hygiene" />}
+							label="Produtos de Higiene"
 						/>
 					</div>
 					}
@@ -197,7 +258,8 @@ function Register(props) {
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password, cpf)
-			await firebase.addData(type, doar.camisas, doar.calcas, receber.camisas, receber.calcas)
+			await firebase.addData(type, doar.shirt, doar.pants, doar.blood, doar.medula, doar.toys,doar.books,doar.food,doar.hygiene)
+			await firebase.addDataReceiver(receber.shirt, receber.pants, receber.blood, receber.medula, receber.toys,receber.books,receber.food,receber.hygiene)
 			props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)

@@ -1,7 +1,5 @@
 /*eslint-disable*/
 import React from "react";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
 import { withRouter } from 'react-router-dom'
 
@@ -12,7 +10,6 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps } from "@material-ui/icons";
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
 // core components
@@ -48,7 +45,11 @@ function HeaderLinksUser(props) {
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-github"
+<<<<<<< HEAD
           title="Veja nosso Github"
+=======
+          title="Visite nosso Github"
+>>>>>>> 1030d923ee42d92f06de45483c6c2e9c10e50ff7
           placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes.tooltip }}
         >

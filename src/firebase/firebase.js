@@ -35,31 +35,55 @@ class Firebase {
 		})
 	}
 	
-	addData(type, camisa, calca, receberCamisas, receberCalcas) {
+	addData(type, shirt, pants, blood, medula, toys, books, food, hygiene ) {
 		if(!this.auth.currentUser) {
 			return alert('Not authorized')
 		};
 
-		if(camisa) {
-			this.db.doc(`camisas/${this.auth.currentUser.uid}`).set({
+		if(shirt) {
+			this.db.doc(`shirt/${this.auth.currentUser.uid}`).set({
 			name: this.auth.currentUser.displayName,
 			email: this.auth.currentUser.email,
 		})};
 
-		if(calca) {
-			this.db.doc(`calca/${this.auth.currentUser.uid}`).set({
+		if(pants) {
+			this.db.doc(`pants/${this.auth.currentUser.uid}`).set({
 			name: this.auth.currentUser.displayName,
 			email: this.auth.currentUser.email,
 		})};
 
-		if(receberCamisas){
-			this.db.doc(`ReceberCamisas/${this.auth.currentUser.uid}`).set({
+		if(blood){
+			this.db.doc(`blood/${this.auth.currentUser.uid}`).set({
 			name: this.auth.currentUser.displayName,
 			email: this.auth.currentUser.email,
 		})};
 
-		if(receberCalcas){
-			this.db.doc(`ReceberCalca/${this.auth.currentUser.uid}`).set({
+		if(medula){
+			this.db.doc(`medula/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(toys){
+			this.db.doc(`toys/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+		
+		if(books){
+			this.db.doc(`books/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(food){
+			this.db.doc(`food/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+		
+		if(hygiene){
+			this.db.doc(`hygiene/${this.auth.currentUser.uid}`).set({
 			name: this.auth.currentUser.displayName,
 			email: this.auth.currentUser.email,
 		})};
@@ -68,6 +92,62 @@ class Firebase {
 			type
 		})
 	}
+
+	addDataReceiver(reShirt, rePants, reBlood, reMedula, reToys, reBooks, reFood, reHygiene ) {
+		if(!this.auth.currentUser) {
+			return alert('Not authorized')
+		};
+
+		if(reShirt) {
+			this.db.doc(`reShirt/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(rePants) {
+			this.db.doc(`rePants/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(reBlood){
+			this.db.doc(`reBlood/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(reMedula){
+			this.db.doc(`reMedula/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(reToys){
+			this.db.doc(`reToys/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+		
+		if(reBooks){
+			this.db.doc(`reBooks/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+
+		if(reFood){
+			this.db.doc(`reFood/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+		
+		if(reHygiene){
+			this.db.doc(`reHygiene/${this.auth.currentUser.uid}`).set({
+			name: this.auth.currentUser.displayName,
+			email: this.auth.currentUser.email,
+		})};
+	}
+
+
 
 	isInitialized() {
 		return new Promise(resolve => {

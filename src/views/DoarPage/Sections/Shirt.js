@@ -21,13 +21,12 @@ import Zoom from '@material-ui/core/Zoom';
 import CardHeader from "components/Card/CardHeader.js";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import calca from "assets/img/examples/calca.jpg";
+import camiseta from "assets/img/examples/camiseta.jpg";
 import image from "assets/img/bg7.jpg";
-
 
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
-export default function Pants(props) {
+export default function Shirt(props) {
 
   const classes = useStyles();
 
@@ -36,7 +35,7 @@ export default function Pants(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("rePants").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("shirt").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {
@@ -54,9 +53,9 @@ export default function Pants(props) {
 		return null
   }
 
-  async function goReceberPage() {
+  async function goDoarPage() {
     try {
-        props.history.push('/receber')
+        props.history.push('/doar')
     } catch(error) {
         alert(error.message)
     }
@@ -71,18 +70,17 @@ export default function Pants(props) {
         rightLinks={<HeaderLinksUser />}
         {...rest}
       />
-      <div
-      style={{
-		backgroundImage: "url(" + image + ")",
-		backgroundSize: "cover",
-		backgroundPosition: "top center"
-	  }} 
+      <div 
+       style={{
+        backgroundImage: "url(" + image + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "top center"
+        }} 
       className={classes.root, classes.main, classes.mainRaised}>
       <Grid container spacing={3}>
           <Grid item color="transparent"  xs={12}>
-          
             <Card color="primary">
-            <ArrowBackIcon  onClick={goReceberPage} />
+            <ArrowBackIcon  onClick={goDoarPage} />
               <CardHeader color="white" >
               <br/>
               <h3 align="center">Você poderá contactar as instituições pelo e-mail</h3>
@@ -93,8 +91,8 @@ export default function Pants(props) {
 
           <Grid item xs={6} sm={3}>
             <Tooltip 
-            id="Calca-tooltip"
-            title="Instituições que disponbilizam calças"
+            id="Camisa-tooltip"
+            title="Instituições que disponbilizam camisas"
             placement={window.innerWidth > 959 ? "bottom" : "right"}
             classes={{ tooltip: classes.tooltip }}
             TransitionComponent={Zoom}>
@@ -103,7 +101,7 @@ export default function Pants(props) {
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={calca}
+                    image={camiseta}
                     title="Camisa"
                   />
                 </CardActionArea>
@@ -112,7 +110,7 @@ export default function Pants(props) {
           </Grid>
           
               <div className={classes.paperModal}>
-                <h2 id="simple-modal-title" align="center" > Calças </h2>
+                <h2 id="simple-modal-title" align="center" > Camisas </h2>
                 <List id="simple-modal-description" className={classes.rootList}> 
                     {register.map (item => (
                       <ListItem>

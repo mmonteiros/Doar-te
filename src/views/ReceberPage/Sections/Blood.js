@@ -21,13 +21,14 @@ import Zoom from '@material-ui/core/Zoom';
 import CardHeader from "components/Card/CardHeader.js";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import calca from "assets/img/examples/calca.jpg";
+import blood from "assets/img/examples/blood.png";
+
 import image from "assets/img/bg7.jpg";
 
 
 import useStyles from "assets/jss/material-kit-react/views/doarPage";
 
-export default function Pants(props) {
+export default function Blood(props) {
 
   const classes = useStyles();
 
@@ -36,7 +37,7 @@ export default function Pants(props) {
   const [register, setRegister] = React.useState([]);
 
   useEffect(() => {
-    firebase.db.collection("rePants").orderBy('name').get().then(querySnapshot => 
+    firebase.db.collection("reBlood").orderBy('name').get().then(querySnapshot => 
           querySnapshot.docs.map(doc => {
             let data = doc.data()
             return {
@@ -93,8 +94,8 @@ export default function Pants(props) {
 
           <Grid item xs={6} sm={3}>
             <Tooltip 
-            id="Calca-tooltip"
-            title="Instituições que disponbilizam calças"
+            id="Blood-tooltip"
+            title="Instituições que disponbilizam sangue para transfusão"
             placement={window.innerWidth > 959 ? "bottom" : "right"}
             classes={{ tooltip: classes.tooltip }}
             TransitionComponent={Zoom}>
@@ -103,8 +104,8 @@ export default function Pants(props) {
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={calca}
-                    title="Camisa"
+                    image={blood}
+                    title="Blood"
                   />
                 </CardActionArea>
               </Card>
@@ -112,7 +113,7 @@ export default function Pants(props) {
           </Grid>
           
               <div className={classes.paperModal}>
-                <h2 id="simple-modal-title" align="center" > Calças </h2>
+                <h2 id="simple-modal-title" align="center" > Sangue </h2>
                 <List id="simple-modal-description" className={classes.rootList}> 
                     {register.map (item => (
                       <ListItem>
